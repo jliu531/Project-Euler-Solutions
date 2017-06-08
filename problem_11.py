@@ -86,7 +86,7 @@ for j in range(number_grid.y):
         if number_grid.bottom_product((i, j)) > largest_num:
             largest_num = number_grid.bottom_product((i, j))
             start_coordinate = (i, j)
-            method = "bottom"
+            method = "down"
         if number_grid.right_product((i, j)) > largest_num:
             largest_num = number_grid.right_product((i, j))
             start_coordinate = (i, j)
@@ -96,6 +96,7 @@ for j in range(number_grid.y):
             start_coordinate = (i, j)
             method = "diagonal"
 
+print("The largest product is", largest_num, "starting at", start_coordinate, "going", method)
             
             
             
