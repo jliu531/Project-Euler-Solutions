@@ -63,7 +63,7 @@ class Grid:
     
     def diag_product(self, coord):
         """takes in a tuple of coordinates and gives the product of four
-        adjacnent numbers going down diagonally starting from and including
+        adjacent numbers going down diagonally starting from and including
         the given coordinate
         """
         i, j = coord
@@ -74,6 +74,20 @@ class Grid:
         else:
             return self.grid[j][i]*self.grid[j + 1][i + 1]* \
                     self.grid[j + 2][i + 2]*self.grid[j + 3][i + 3]
+    
+    def up_diag_product(self, coord):
+        """takes in a tuple of coordinates and gives the product of four
+        adjacent numbers going up diagonally and to the right starting from
+        and including the given coordinate
+        """
+        i, j = coord
+        if i + 3 > self.x - 1:
+            return -1
+        if j - 3 < 0:
+            return -1
+        else:
+            return self.grid[j][i]*self.grid[j - 1][i + 1]* \
+                    self.grid[j - 2][i + 2]*self.grid[j - 3][i + 3]
 
 ### main program ###
 
@@ -95,6 +109,10 @@ for j in range(number_grid.y):
             largest_num = number_grid.diag_product((i, j))
             start_coordinate = (i, j)
             method = "diagonal"
+        if number_grid.up_diag_product((i, j)) > largest_num:
+            largest_num = number_grid.up_diag_product((i, j))
+            start_coordinate = (i, j)
+            method = "upward diagonal"
 
 print("The largest product is", largest_num, "starting at", start_coordinate, "going", method)
             
