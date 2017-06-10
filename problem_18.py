@@ -99,7 +99,8 @@ for i in range(len(directions)):
         j = j + 1
     else:
         path.append(orig_pyr.get_left_neighbor((i, j)))
-    
+
+print("The maximum total is", maxes, "with path", path)
         
         
     
